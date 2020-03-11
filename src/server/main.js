@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const environment = require('../config/environment');
 const routes = require('../app/routes');
 const loggerMiddleware = require('../app/middlewares/logger');
@@ -14,6 +15,7 @@ class Main {
     this.config();
     this.middlewares();
     this.routes();
+    this.dataBaseConnection();
   }
 
   startServer() {
@@ -31,6 +33,12 @@ class Main {
 
   routes() {
     this.app.use(routes);
+  }
+
+  dataBaseConnection() {
+    mongoose.connect(
+      'mongodb://localhost:27017/ecommerce',
+      { useNewUrlParser: true, useUnifiedTopology: true });
   }
 }
 
