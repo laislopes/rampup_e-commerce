@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 const environment = require('../config/environment');
-const routes = require('../app/routes');
+const products = require('../app/models/Product/Product.js');
+const routes = require('../app/routes/routes.js');
 const loggerMiddleware = require('../app/middlewares/logger');
 
 class Main {

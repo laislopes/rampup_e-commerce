@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 class Product {
 
   constructor(color, department, description, image, material, name, price, stock, createdAt, updatedAt) {
@@ -12,7 +14,16 @@ class Product {
     this._stock = stock;
     this._createdAt = createdAt;
     this._updatedAt = updatedAt;
-    Object.freeze(this);
+    //Object.freeze(this);
   }
 
 }
+
+const ProductSchema = new mongoose.Schema();
+ProductSchema.loadClass(Product);
+
+mongoose.model('Product', ProductSchema);
+
+console.log(ProductSchema.methods);
+console.log(ProductSchema.statics);
+console.log(ProductSchema.virtuals);
